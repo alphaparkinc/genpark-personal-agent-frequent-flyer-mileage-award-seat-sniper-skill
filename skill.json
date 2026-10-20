@@ -1,0 +1,93 @@
+{
+  "name": "genpark-personal-agent-frequent-flyer-mileage-award-seat-sniper-skill",
+  "version": "1.0.0",
+  "title": "Frequent Flyer Mileage Award Seat Value & Sniper Skill",
+  "description": "Star Alliance / Oneworld / SkyTeam award seat availability polling, points-to-cents redemption valuation (CPP), transfer bonus matrix optimization, and instant partner booking alert synthesizer. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "award-travel",
+    "airline-miles",
+    "cpp-valuation",
+    "frequent-flyer",
+    "travel-hacking",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "evaluate_award_redemption_value",
+      "description": "Calculate Cents-Per-Point (CPP) value of airline award flight redemption against cash ticket baseline and taxes/fees.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "airline_program": {
+            "type": "string"
+          },
+          "cash_ticket_price_usd": {
+            "type": "number"
+          },
+          "required_points": {
+            "type": "integer"
+          },
+          "taxes_and_surcharges_usd": {
+            "type": "number"
+          },
+          "cabin_class": {
+            "type": "string",
+            "enum": [
+              "economy",
+              "premium_economy",
+              "business",
+              "first"
+            ]
+          }
+        },
+        "required": [
+          "airline_program",
+          "cash_ticket_price_usd",
+          "required_points",
+          "taxes_and_surcharges_usd"
+        ]
+      }
+    },
+    {
+      "name": "find_optimal_credit_card_transfer_partner",
+      "description": "Identify best credit card rewards ecosystem (Amex, Chase, Citi, Capital One, Bilt) to transfer points with active bonus multipliers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target_airline": {
+            "type": "string"
+          },
+          "needed_airline_miles": {
+            "type": "integer"
+          },
+          "available_bank_points": {
+            "type": "object",
+            "properties": {
+              "chase_ur": {
+                "type": "integer"
+              },
+              "amex_mr": {
+                "type": "integer"
+              },
+              "citi_ty": {
+                "type": "integer"
+              },
+              "capone_miles": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "required": [
+          "target_airline",
+          "needed_airline_miles"
+        ]
+      }
+    }
+  ]
+}
